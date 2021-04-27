@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .all{
+           width: 60%;
+           margin: auto;
+        }
+        h1{
+            font-size: 36px;
+            font-weight: bold; 
+        }
+        .one h1{
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .one{
+            margin: 50px 0;
+            padding: 30px;
+        }
+        .one img{
+            margin: 10px 0;
+            height: 50%;
+        }
+        .one h2{
+            font-weight: bold;
+        }
+    </style>
+    <title>home</title>
+</head>
+<body>
+    <header>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/allProduct">All Product</a></li>
+            <li><a href="/myCard">My Card</a></li>
+        </ul>
+    </header>
+    <main>
+        <h1>Product By Price</h1>
+        <div class="all">
+
+            <% data.forEach(obj => { %>
+             <div class="one">
+                <h1><%= obj.name %> </h1>
+                <img src=<%= obj.image_link %> alt="">
+                <h2>Price : <%= obj.price %> </h2>
+                <p><%= obj.description %></p>
+                <button class="UpdateBTN"> Update</button>
+                <form action="/delete/<%= obj.id %>?_method=delete" method="POST">
+                <input type="submit" value="DELETE"></form>
+                
+                <form style="display: none;" class="updateForm" action="/update/<%= obj.id %>?_method=put" method="POST">
+                    <input type="text" name="name" value='<%= obj.name %>'>
+                    <input type="number" name="price" value="<%= obj.price %>">
+                    <input type="textarea" name="description" value="<%= obj.description %>">
+                    <input type="submit"  value="save">
+             </div>
+            <% }) %>
+        </div>
+    </main>
+
+    <footer>
+        &copy;Mousa
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="../js/details.js"></script>
+</body>
+</html>

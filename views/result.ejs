@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        .all{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 50px;
+        }
+        h1{
+            font-size: 36px;
+            font-weight: bold; 
+        }
+        .one h1{
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .one{
+            padding: 30px;
+            margin: 50px 0;
+        
+        }
+        .one img{
+            margin: 10px 0;
+            height: 50%;
+        }
+        .one h2{
+            font-weight: bold;
+        }
+    </style>
+    <title>home</title>
+</head>
+<body>
+    <header>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/allProduct">All Product</a></li>
+            <li><a href="/myCard">My Card</a></li>
+        </ul>
+    </header>
+    <main>
+        <h1>Product By Price</h1>
+        <div class="all">
+
+            <% data.forEach(obj => { %>
+             <div class="one">
+                <h1><%= obj.name %> </h1>
+                <img src=<%= obj.image_link %> alt="">
+                <h2>Price : <%= obj.price %> </h2>
+                <p><%= obj.description %></p>
+             </div>
+            <% }) %>
+        </div>
+    </main>
+
+    <footer>
+        &copy;Mousa
+    </footer>
+</body>
+</html>
