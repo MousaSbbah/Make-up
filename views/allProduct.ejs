@@ -9,12 +9,15 @@
     <style>
         .all{
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-columns:  1fr 1fr 1fr;
             gap: 50px;
         }
         h1{
+            width: 100%;
+            background-color: #fdbaf8;
+            text-align: center;
             font-size: 36px;
-            font-weight: bold; 
+            font-weight: bold;  
         }
         .one h1{
             font-size: 25px;
@@ -22,8 +25,10 @@
         }
 
         .one{
-            margin: 50px 0;
             padding: 30px;
+            margin: 50px 0;
+            
+            
         }
         .one img{
             margin: 10px 0;
@@ -44,7 +49,7 @@
         </ul>
     </header>
     <main>
-        <h1>Product By Price</h1>
+        <h1>ALL PRODUCTS</h1>
         <div class="all">
 
             <% data.forEach(obj => { %>

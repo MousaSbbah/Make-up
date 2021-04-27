@@ -46,6 +46,9 @@ function deleteCard(req,res) {
     .then(()=>{
       res.redirect('/myCard')
     })
+    .catch(()=>{
+      res.send('Somthing Went Wrong');
+    })
 }
 function updateCard(req,res) {
   let data = req.body;
@@ -55,6 +58,9 @@ function updateCard(req,res) {
     .then(()=>{
       res.redirect('back');
     })
+    .catch(()=>{
+      res.send('Somthing Went Wrong');
+    })
 }
 function details(req,res) {
   let SQL =`SELECT * FROM mycards WHERE id=${req.params.id}`
@@ -62,11 +68,17 @@ function details(req,res) {
     .then((data)=>{
       res.render('details',{data:data.rows})
     })
+    .catch(()=>{
+      res.send('Somthing Went Wrong');
+    })
 }
 function myCard(req,res) {
   client.query('SELECT * FROM mycards')
     .then(data=>{
       res.render('myCards',{data:data.rows})
+    })
+    .catch(()=>{
+      res.send('Somthing Went Wrong');
     })
 }
 
@@ -78,6 +90,9 @@ function addToCard(req,res) {
     .then(()=>{
       res.redirect('/myCard');
     })
+    .catch(()=>{
+      res.send('Somthing Went Wrong');
+    })
 }
 
 function allProducts(req,res) {
@@ -88,11 +103,14 @@ function allProducts(req,res) {
       })
       res.render('allProduct',{data:allProducts})
     })
+    .catch(()=>{
+      res.send('Somthing Went Wrong');
+    })
 }
 
 
 function result(req,res) {
-  let URL =`http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline&price_greater_than=${req.query.from}&price_less_than=${req.query.to}`
+  let URL =`http://makeup-api.herokuapp.com/api/v1/products.json?brand=${req.query.brand}&price_greater_than=${req.query.from}&price_less_than=${req.query.to}`
   superagent.get(URL)
     .then(data=>{
       let resultArr = data.body.map(val=>{
@@ -101,12 +119,17 @@ function result(req,res) {
       console.log(data.body,resultArr);
       res.render('result',{data:resultArr})
     })
+    .catch(()=>{
+      res.send('Somthing Went Wrong');
+    })
 }
 function homePage(req,res) {
   res.render('home')
 }
 
-
+app.get('*',(req,res)=>{
+  res.send('Page Not Found');
+})
 
 
 

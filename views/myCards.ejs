@@ -9,7 +9,7 @@
     <style>
         .all{
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-columns:  1fr 1fr 1fr;
             gap: 50px;
         }
         h1{
@@ -31,6 +31,15 @@
         }
         .one h2{
             font-weight: bold;
+        }
+        .one a{
+            color: black;
+            background-color: #edffa9;
+            font-size: 25px;
+            width: 70%;
+            height: 50px;
+            line-height: 50px;
+            margin: auto;
         }
     </style>
     <title>home</title>
@@ -55,7 +64,7 @@
                            <img src=<%= obj.image_link %> alt="">
                            <h2>Price : <%= obj.price %> </h2>
            
-                           <a href="/details/<%= obj.id %> ">More Details </a>
+                           <a href="/details/<%= obj.id %> ">View Details </a>
                            
                           
                         </div>
